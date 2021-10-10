@@ -120,3 +120,70 @@
 </body>
 </html>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from 'react-dom' */
+</script>
+
+<script type="text/babel">
+
+    const { useState, useEffect, useRef, useCallback, useMemo, Fragment } = React;
+    function Label(props) {
+        // 컴포넌트의 상태값 설정
+        const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+        const [state, setState] = useState({ id: 0, name: '', age: 0, }); // 상태값이 참조타입 경우
+
+        // JSX로 화면 만들기
+        return (
+            <div className="label">
+                {props.color}
+            </div>
+        )
+    }
+
+    function Square(props) {
+        // 컴포넌트의 상태값 설정
+        const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
+        const [state, setState] = useState({ id: 0, name: '', age: 0, }); // 상태값이 참조타입 경우
+
+        let style = { backgroundColor: props.color }
+        // JSX로 화면 만들기
+        return (
+            <div className="square" style={style}>
+                </div>
+        )
+    }
+
+    function Card(props) {
+        // 컴포넌트의 상태값 설정
+        // const [color, setColor] = useState('기본값'); // 상태값이 기본타입인 경우
+
+        let style = { backgroundColor: props.color }
+        // JSX로 화면 만들기
+        return (
+            <div className="card">
+                <Square {...props}></Square>
+                <Label {...props}></Label>
+            </div>
+        )
+    }
+
+
+    ReactDOM.render(
+        <div>
+            <Card color={"#ff6663"}></Card>
+            <Card color={"#ffa737"}></Card>
+        </div>
+        ,
+        document.getElementById("app")
+    )
+
+</script>

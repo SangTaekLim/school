@@ -58,3 +58,67 @@
 
 </html>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from 'react' */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from 'react-dom' */
+</script>
+
+<script type="text/babel">
+
+    const { useState, useEffect, useRef, useCallback, useMemo, Fragment } = React;
+    function HelloContainer(props) {
+        // 컴포넌트의 상태값 설정
+        const [mesg, setMesg] = useState('hello'); // 상태값이 기본타입인 경우
+
+
+        // JSX로 화면 만들기
+        return (
+            <div>
+                <HelloReact mesgOfProps="Hello, Props!!!" mesgOfProps2="22"></HelloReact>
+            </div>
+        )
+    }
+
+    // const { mesgOfProps } = props;
+    function HelloReact(props) {
+        // 컴포넌트의 상태값 설정
+        console.log(props);
+        const [mesgOfState, setMesgOfState] = useState('Hello State'); // 상태값이 기본타입인 경우
+
+        // JSX로 화면 만들기
+        return (
+            <div>
+                도전1. Hello, React!!!
+                <br />
+                도전2. {mesgOfState}
+                <br />
+                도전3. {props.mesgOfProps}
+                <br/>
+                도전4. {props.mesgOfProps2}
+
+            </div>
+        )
+    }
+
+    HelloReact.propsTypes = {
+        // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+        // 인자명: PropTypes.func.isRequired,
+    };
+    HelloReact.defaultProps = {
+        // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
+        // 인자명: () => {},
+    };
+
+
+
+    ReactDOM.render(<HelloContainer />, document.getElementById("app"))
+</script>
+
+
